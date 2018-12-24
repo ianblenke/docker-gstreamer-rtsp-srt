@@ -16,6 +16,7 @@ networks:
     hostname: gstreamer-rtsp-srt
     build: docker-gstreamer-rtsp-srt/
     image: sofwerx/gstreamer-rtsp-srt
+    restart: always
     environment:
       RTSP_URL: ${RTSP_URL}
       #RTSP_USER_ID: ${RTSP_USER_ID}

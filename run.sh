@@ -7,7 +7,7 @@ if [ -n "${RTSP_USER_PW}" ]; then
 fi
 if [ -n "${SRT_PASSPHRASE}" ]; then
   SRT_PASSPHRASE="passphrase=${SRT_PASSPHRASE}"
-  SRT_KEY_LENGTH="${SRT_KEY_LENGTH:-32}"
+  SRT_KEY_LENGTH="key-length=${SRT_KEY_LENGTH:-32}"
 fi
 
 exec gst-launch-1.0 -v rtspsrc ${RTSP_USER_ID} ${RTSP_USER_PW} location=${RTSP_URL} ! rtph264depay ! h264parse ! mpegtsmux ! rndbuffersize max=1316 min=1316 ! srtserversink uri=srt://:${SRT_PORT}/ ${SRT_PASSPHRASE} ${SRT_KEY_LENGTH}
