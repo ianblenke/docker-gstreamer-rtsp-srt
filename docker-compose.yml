@@ -1,0 +1,33 @@
+version: "2.1"
+
+x-logging:
+  &default-logging
+  options:
+    max-size: '12m'
+    max-file: '5'
+  driver: json-file
+
+networks: 
+  default:
+    driver: bridge
+
+  gstreamer-rtsp-srt:
+    container_name: gstreamer-rtsp-srt
+    hostname: gstreamer-rtsp-srt
+    build: docker-gstreamer-rtsp-srt/
+    image: sofwerx/gstreamer-rtsp-srt
+    environment:
+      RTSP_URL: ${RTSP_URL}
+      #RTSP_USER_ID: ${RTSP_USER_ID}
+      #RTSP_USER_PW: ${RTSP_USER_PW}
+      SRT_PORT: 8888
+      #SRT_PASSPHRASE: secret
+      #SRT_KEY_LENGTH: 32
+    ports:
+      - 8888:8888 
+    logging: *default-logging
+    networks:
+      - default
+    labels:
+      - "traefik.enable=false"
+
