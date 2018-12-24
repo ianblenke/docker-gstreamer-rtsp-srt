@@ -21,11 +21,11 @@ networks:
       RTSP_URL: ${RTSP_URL}
       #RTSP_USER_ID: ${RTSP_USER_ID}
       #RTSP_USER_PW: ${RTSP_USER_PW}
-      SRT_PORT: 8888
+      SRT_PORT: 7001
       #SRT_PASSPHRASE: secret
       #SRT_KEY_LENGTH: 32
     ports:
-      - 8888:8888 
+      - 7001:7001 
     logging: *default-logging
     networks:
       - default
