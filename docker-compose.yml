@@ -25,7 +25,7 @@ networks:
       #SRT_PASSPHRASE: secret
       #SRT_KEY_LENGTH: 32
     ports:
-      - 7001:7001 
+      - 7001:7001/udp
     logging: *default-logging
     networks:
       - default
